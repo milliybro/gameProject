@@ -5,12 +5,16 @@ import { request } from "../../request";
 import "./AllHistory.scss";
 
 interface DataType {
-  key: React.Key;
-  username: string;
-  category: string[];
-  count: number; // Change from 'count' to 'score'
-  time: number;
-  is_win: string; // Assuming 'isWin' exists in your data
+  id: string; // Add the id property if it exists in your data
+  key: string;
+  category: Category;
+  count: number; // Changed from 'count' to 'score'
+  time: string; // Assuming 'time' is a string in the format "YYYY-MM-DD HH:MM:SS"
+  is_win: string; // Assuming 'is_win' is a boolean
+}
+interface Category {
+  name: string;
+  // Add other properties if they exist in your data
 }
 
 const AllHistory: React.FC = () => {
@@ -53,6 +57,7 @@ const AllHistory: React.FC = () => {
   ];
 
   const data = userData.map((item) => ({
+    id: item.id,
     key: item.id,
     category: item.category ? item.category.name : "Unknown", // Handle null category
     count: item.count,
