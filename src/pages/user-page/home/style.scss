@@ -1,0 +1,33 @@
+main {
+  height: 100vh;
+}
+
+.home-select {
+  position: sticky;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 80px;
+  // height: 100vh;
+  background-color: #fff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  .ant-select {
+    width: 300px !important;
+    height: 50px;
+  }
+  .time {
+    color: blue;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .home-chances {
+    color: blue !important;
+    font-size: 24px;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,494 @@
+section.section-login .section-main {
+  height: auto;
+  display: flex;
+}
+.main section.section-login {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  label {
+    font-family: "Poppins";
+  }
+}
+
+.main section.section-login .section-main .section-login-1,
+main section.section-login .section-login-2 {
+  width: 250% !important;
+  display: flex;
+  justify-content: center;
+  background: #fff !important;
+  align-items: center;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-1
+  .section-login-1-main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-1
+  .section-login-1-main
+  .section-login-1-title {
+  font-size: 32px;
+  color: #fff;
+  font-family: "Poppy", sans-serif;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-1
+  .section-login-1-main
+  .section-login-1-text {
+  background: #fff !important;
+
+  color: #ffffff94;
+  font-family: "Poppy", sans-serif;
+  font-size: 18px;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-1
+  .section-login-1-main
+  .section-login-1-img {
+  background: #fff !important;
+
+  width: 100%;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-1
+  .section-login-1-main
+  .section-login-1-img
+  img {
+  width: 100%;
+
+  display: block;
+}
+
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main {
+  width: 40%;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-title {
+  font-size: 32px;
+  font-family: "Poppy", sans-serif;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-1,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-2,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-3 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-1
+  label,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-2
+  label,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-3
+  label {
+  font-weight: 500;
+  font-size: 15px;
+  background: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-1
+  input,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-2
+  input,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-3
+  input {
+  background-color: #dadada !important;
+  padding: 12px 15px;
+  border: 1px solid #e9e6e6;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-4 {
+  background-color: #fff !important;
+
+  display: flex;
+  column-gap: 7px;
+  align-items: end;
+  width: 500px !important;
+  text-align: end !important;
+  justify-content: end !important;
+  p {
+    text-decoration: underline;
+  }
+}
+.regis{
+  height: 100px !important;
+  padding-top: 50px !important;
+  margin-top: 50px !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-4
+  p,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-5
+  p {
+  font-size: 14px;
+  background-color: #fff !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-4
+  p
+  a,
+main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-5
+  p
+  a {
+  font-weight: bold;
+  color: #ffa700;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-submit-btn
+  button {
+  background: #ffa700 !important;
+
+  padding: 14px;
+  width: 100%;
+  color: #000;
+  outline: none;
+  border: 0px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+.section-login-2-main {
+  // width: 300px !important;
+  background-color: #ffffff50 !important;
+}
+.main
+  section.section-login
+  .section-main
+  .section-login-2
+  .section-login-2-main
+  .section-login-2-form
+  .login-form-5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #fff !important;
+
+  p * {
+    background-color: #fff !important;
+  }
+}
+.for_register * {
+  background-color: #fff !important;
+  //   background: #ffa700 !important;
+  .register_info {
+    span * {
+      background-color: #fff !important;
+      color: orange !important;
+      font-weight: bold;
+    }
+  }
+}
+.password-input-container {
+  position: relative;
+  background-color: #fff !important;
+
+  .password-toggle-button {
+    background-color: transparent !important;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    cursor: pointer;
+    img {
+      width: 25px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  /* login page */
+  .main section.section-login .section-login-1 .section-login-1-main,
+  main section.section-login .section-login-2 .section-login-2-main {
+    width: 85%;
+  }
+  .main
+    section.section-login
+    .section-login-1
+    .section-login-1-main
+    .section-login-1-title,
+  main
+    section.section-login
+    .section-login-1
+    .section-login-1-main
+    .section-login-1-form {
+    margin-top: 35px;
+  }
+  .main section.section-login .section-main {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  /* login page */
+  .main section.section-login .section-main {
+    padding: 35px 0px;
+  }
+  .main section.section-login .section-login-1 .section-login-1-main,
+  main section.section-login .section-login-2 .section-login-2-main {
+    width: 90%;
+  }
+  .main section.section-login .section-login-1 .section-login-1-main {
+    height: 90%;
+  }
+  .main
+    section.section-login
+    .section-login-1
+    .section-login-1-main
+    .section-login-1-title,
+  main
+    section.section-login
+    .section-login-1
+    .section-login-1-main
+    .section-login-1-form {
+    margin-top: 25px;
+  }
+  .main section.section-login .section-main {
+    flex-direction: column;
+    width: 75%;
+    padding: 50px 0px;
+  }
+  .main section.section-login .section-main .section-login-1,
+  main section.section-login .section-login-2 {
+    width: 100%;
+  }
+
+  .main section.section-login {
+    height: unset;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main section.section-login .section-main {
+    width: 100%;
+    padding: 0px;
+  }
+  .main
+    section.section-login
+    .section-main
+    .section-login-2
+    .section-login-2-main {
+    padding: 35px 25px;
+  }
+}
+
+.login-click {
+  padding-top: 10px;
+  a {
+    color: #ffa700;
+    text-decoration: underline;
+  }
+}
+
+.main {
+  background: #00000090;
+}
+body,
+html {
+  background-repeat: no-repeat;
+  position: relative;
+}
+#login-box {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 350px;
+  margin: 0 auto;
+  border: 1px solid black;
+  background: rgba(48, 46, 45, 1);
+  min-height: 200px;
+  padding: 20px;
+  z-index: 9999;
+}
+#login-box .logo .logo-caption {
+  font-family: "Poiret One", cursive;
+  color: white;
+  text-align: center;
+  margin-bottom: 0px;
+}
+#login-box .logo .tweak {
+  color: blue;
+}
+#login-box .controls {
+  padding-top: 30px;
+}
+#login-box .controls input {
+  border-radius: 0px;
+  background: rgb(98, 96, 96);
+  border: 0px;
+  color: white;
+}
+#login-box .controls input:focus {
+  box-shadow: none;
+}
+#login-box .controls input:first-child {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+#login-box .controls input:last-child {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+#login-box button.btn-custom {
+  border-radius: 2px;
+  margin-top: 8px;
+  background: blue;
+  border-color: rgba(48, 46, 45, 1);
+  color: white;
+}
+#login-box button.btn-custom:hover {
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+  background: rgba(48, 46, 45, 1);
+  border-color: blue;
+}
+#particles-js {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: fixed;
+  top: 0px;
+  z-index: 1;
+}

@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+html  {
+  scroll-behavior: smooth;
+}
+.container {
+  max-width: 1300px !important;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+body {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+.notfound {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.modal-overlay {
+  padding: 30px !important;
+}
+.client_checking * {
+  h2 {
+    margin-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  color: black !important;
+  span {
+    color: red !important;
+  }
+}
+
+.user-modal {
+  text-align: left !important;
+  margin-top: 10px;
+  margin-left: 15px;
+  li {
+    list-style-type: disc !important;
+    text-align: left !important;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.modal-actions {
+  button {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    &:hover {
+      box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.9);
+      transform: scale(1.1);
+    }
+  }
+}
