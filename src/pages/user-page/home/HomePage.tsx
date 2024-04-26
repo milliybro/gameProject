@@ -1,9 +1,7 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { request } from "../../../request";
-import { Select, Modal, Button, message } from "antd";
+import { Select, Modal, Button } from "antd";
 import "./style.scss";
-import { IMG_URL } from "../../../constants";
-import avatar from "../../../assets/avatar-svgrepo-com.svg";
 import AllHistory from "../../../components/history/AllHistory";
 import GameMain from "../../../components/GameMain/GameMain";
 
@@ -11,13 +9,12 @@ const HomePage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [userData, setUserData] = useState([]);
-  const [timeRemainingInSeconds, setTimeRemainingInSeconds] = useState(null);
-  const [chances, setChances] = useState(3);
+  const [timeRemainingInSeconds, setTimeRemainingInSeconds] = useState(0);
+  const [chances, setChances] = useState<number>(3);
   const [gameOver, setGameOver] = useState(false);
   const [questionImages, setQuestionImages] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
-  const [wonSeconds, setWonSeconds] = useState(0); // Track seconds won
 
   useEffect(() => {
     fetchData();
@@ -61,7 +58,7 @@ const HomePage = () => {
     }
   };
 
-  const fetchCategoryData = async (categoryId) => {
+  const fetchCategoryData = async (categoryId: string | number) => {
     try {
       const response = await request.get(`game/category/${categoryId}/`);
       setUserData(response.data);
@@ -134,9 +131,7 @@ const HomePage = () => {
           // setWonSeconds={setWonSeconds}
         />
       )}
-      {gameOver && <div>
-        gf
-        </div>}
+      {gameOver && <div>gf</div>}
       <AllHistory />
       <Modal
         title={modalTitle}
@@ -148,7 +143,6 @@ const HomePage = () => {
           <Fragment>
             <p>Score: {9 - questionImages.length}</p>
             <p>Game Time: {timeRemainingInSeconds} seconds</p>
-            {wonSeconds > 0 && <p>You won {wonSeconds} seconds!</p>}
           </Fragment>
         ) : null}
       </Modal>

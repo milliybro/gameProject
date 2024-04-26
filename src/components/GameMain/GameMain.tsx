@@ -1,19 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { request } from "../../request";
 import { Button, message } from "antd";
 import { useAuth } from "../../states/auth";
 
 import "./GameMain.scss";
 
-const GameMain = ({
+interface Question {
+  id: string;
+  question: string;
+  imageId?: string; // Optional property representing the identifier of the associated image
+  selected?: boolean; // Optional boolean property
+}
+
+interface ImageData {
+  id: string;
+  image: string;
+}
+
+type GameMainProps = {
+  selectedCategory: string;
+  chances: number;
+  setChances: (value: number) => void;
+  userData: Question[];
+  setUserData: (data: Question[]) => void;
+  gameOver: boolean;
+  setGameOver: (value: boolean) => void;
+  setTimeRemainingInSeconds: (value: number) => void;
+  questionImages: ImageData[];
+  setQuestionImages: (images: ImageData[]) => void;
+  fetchCategoryData: () => void;
+};
+
+const GameMain: React.FC<GameMainProps> = ({
   selectedCategory,
   chances,
   setChances,
   userData,
   setUserData,
   gameOver,
-  setGameOver,
-  setTimeRemainingInSeconds,
   questionImages,
   setQuestionImages,
   fetchCategoryData,
@@ -22,10 +46,10 @@ const GameMain = ({
   const [messageApi] = message.useMessage();
 
   const warning = () => {
-    messageApi.warning('This is a warning message');
+    messageApi.warning("This is a warning message");
   };
 
-  const postImage = async (data) => {
+  const postImage = async (data: { question_ids: string[] }) => {
     try {
       if (questionImages.length === 0) {
         const res = await request.post("game/questions-image/", data);
@@ -79,20 +103,18 @@ const GameMain = ({
       // setGameOver(true);
     }
   }, [selectedCategory, questionImages.length]);
-  
 
   console.log(questionImages, "55", selectedCategory, ":sele");
-  
 
   const getData = async () => {
     try {
       const res = await request.get(`game/questions/${selectedCategory}`);
-      const questionIds = res.data.map((data) => data.id);
+      const questionIds = res.data.map((data: Question) => data.id);
       if (questionImages.length === 0) {
         await postImage({ question_ids: questionIds });
       }
 
-      const userDataWithImageIds = res.data.map((data, index) => ({
+      const userDataWithImageIds = res.data.map((data: Question, index: number) => ({
         ...data,
         imageId: questionIds[index],
       }));
@@ -102,7 +124,7 @@ const GameMain = ({
     }
   };
 
-  const handleUserDataClick = (id) => {
+  const handleUserDataClick = (id: string) => {
     const updatedUserData = userData.map((data) => ({
       ...data,
       selected: data.id === id,
@@ -110,7 +132,7 @@ const GameMain = ({
     setUserData(updatedUserData);
   };
 
-  const handleQuestionImageClick = async (id) => {
+  const handleQuestionImageClick = async (id: string) => {
     try {
       if (gameOver || chances <= 0) {
         return;
@@ -119,7 +141,7 @@ const GameMain = ({
         return;
       }
       const userDataItem = userData.find((data) => data.imageId === id);
-      if (!userDataItem.selected) {
+      if (!userDataItem?.selected) {
         setChances(chances - 1);
         warning();
         return;
@@ -133,7 +155,7 @@ const GameMain = ({
       setUserData(updatedUserData);
       setQuestionImages(updatedQuestionImages);
 
-      if (userDataItem.id === id) {
+      if (userDataItem?.id === id) {
         if (updatedQuestionImages.length === 0) {
           // setGameOver(true);
         }
