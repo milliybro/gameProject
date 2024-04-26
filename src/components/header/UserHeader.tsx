@@ -1,21 +1,30 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../states/auth";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { request } from "../../request";
-import { IMG_URL } from "../../constants";
-
-import bell from "../../assets/bell.png";
 import logoutIcon from "../../assets/logout.svg";
 
 import "./Header.scss";
+interface UserData {
+  birthday: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  address: string;
+  email: string;
+  info: string;
+  photo: string;
+  username?: string; // Assuming username might be present but optional
+}
+
 
 const UserHeader = () => {
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState(false);
   const [unansweredMessages, setUnansweredMessages] = useState(0);
   const { userId } = useAuth();
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<UserData>({
     birthday: "",
     firstName: "",
     lastName: "",
@@ -25,6 +34,8 @@ const UserHeader = () => {
     info: "",
     photo: "",
   });
+  
+console.log(setUnansweredMessages);
 
   const controlDropdown = () => {
     setOpenDropdown(!openDropdown);
