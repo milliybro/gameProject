@@ -68,6 +68,7 @@ const HomePage = () => {
       console.error("Error fetching category data:", error);
     }
   };
+  console.log(fetchCategoryData);
 
   const formatTime = () => {
     if (timeRemainingInSeconds == null || isNaN(timeRemainingInSeconds))
@@ -106,7 +107,7 @@ const HomePage = () => {
           filterOption={(input, option) =>
             option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0
           }
-          options={categories.map((category) => ({
+          options={categories.map((category: { id: string; name: string }) => ({
             value: category.id,
             label: category.name,
           }))}

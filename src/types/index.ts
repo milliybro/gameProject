@@ -84,12 +84,15 @@ export interface PortfolioType {
   ["data"]: DataType[];
   pagination: { limit: number; page: number; next: number; total: number };
 }
-export interface DataType {
-  key: React.Key;
-  category: string; // Assuming 'category' is a string, if it's an array of strings, it should be 'string[]'
-  count: number; // Changed from 'count' to 'score'
-  time: string; // Assuming 'time' is a string in the format "YYYY-MM-DD HH:MM:SS"
-  is_win: boolean; // Assuming 'is_win' is a boolean
+interface DataType {
+  id: string;
+  key: string;
+  category: {
+    name: string; // Define 'category' as an object with a 'name' property
+  };
+  count: number;
+  time: string;
+  is_win: boolean;
 }
 
 export interface PhotoType {

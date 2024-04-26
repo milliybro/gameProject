@@ -5,17 +5,17 @@ import { request } from "../../request";
 import "./AllHistory.scss";
 
 interface DataType {
-  id: string; // Add the id property if it exists in your data
+  id: string;
   key: string;
-  category: Category;
-  count: number; // Changed from 'count' to 'score'
-  time: string; // Assuming 'time' is a string in the format "YYYY-MM-DD HH:MM:SS"
-  is_win: string; // Assuming 'is_win' is a boolean
+  category: {
+    name: string; // Define 'category' as an object with a 'name' property
+  };
+  count: number;
+  time: string;
+  is_win: boolean;
 }
-interface Category {
-  name: string;
-  // Add other properties if they exist in your data
-}
+
+
 
 const AllHistory: React.FC = () => {
   const [userData, setUserData] = useState<DataType[]>([]); // Initialize as an array
