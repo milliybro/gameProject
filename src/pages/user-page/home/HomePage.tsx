@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { request } from "../../../request";
 import { Select, Modal, Button } from "antd";
 import "./style.scss";
@@ -6,59 +6,48 @@ import AllHistory from "../../../components/history/AllHistory";
 import GameMain from "../../../components/GameMain/GameMain";
 
 const HomePage = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<{ id: string; name: string }[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [userData, setUserData] = useState([]);
-  const [timeRemainingInSeconds, setTimeRemainingInSeconds] = useState(0);
+  const [timeRemainingInSeconds, setTimeRemainingInSeconds] = useState<number | null>(null);
   const [chances, setChances] = useState<number>(3);
-  const [gameOver, setGameOver] = useState(false);
-  const [questionImages, setQuestionImages] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalTitle, setModalTitle] = useState("");
+  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [questionImages, setQuestionImages] = useState<any[]>([]);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [modalTitle, setModalTitle] = useState<string>("");
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   if (selectedCategory !== "") {
-  //     fetchCategoryData(selectedCategory);
-  //   }
-  // }, [selectedCategory]);
-
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (!gameOver && timeRemainingInSeconds > 0) {
-        setTimeRemainingInSeconds((prevTime) => prevTime - 1);
-      } else {
-        clearInterval(timer);
-        if (timeRemainingInSeconds === 0) {
-          // setGameOver(true);
-        }
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [gameOver, timeRemainingInSeconds]);
-
-  useEffect(() => {
-    if (gameOver && timeRemainingInSeconds === 0) {
-      setModalTitle("You lost!");
-      setModalVisible(true);
+    if (selectedCategory !== "") {
+      fetchCategoryData(selectedCategory);
     }
-  }, [gameOver, timeRemainingInSeconds]);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    if (timeRemainingInSeconds !== null && timeRemainingInSeconds > 0) {
+      timer = setTimeout(() => {
+        setTimeRemainingInSeconds(timeRemainingInSeconds - 1);
+      }, 1000);
+    } else if (timeRemainingInSeconds === 0) {
+      setGameOver(true); // Game over when time reaches 0:00
+    }
+    return () => clearTimeout(timer);
+  }, [timeRemainingInSeconds]);
 
   const fetchData = async () => {
     try {
       const response = await request.get(`game/categorys/`);
       setCategories(response.data);
-      // Call postImage after fetching categories
     } catch (error) {
       console.error("Error fetching categories:", error);
     }
   };
 
-  const fetchCategoryData = async (categoryId: string | number) => {
+  const fetchCategoryData = async (categoryId: string) => {
     try {
       const response = await request.get(`game/category/${categoryId}/`);
       setUserData(response.data);
@@ -68,7 +57,6 @@ const HomePage = () => {
       console.error("Error fetching category data:", error);
     }
   };
-  console.log(fetchCategoryData);
 
   const formatTime = () => {
     if (timeRemainingInSeconds == null || isNaN(timeRemainingInSeconds))
@@ -84,6 +72,7 @@ const HomePage = () => {
     setUserData([]);
     setChances(3);
     setGameOver(false);
+    setQuestionImages([]);
   };
 
   const handleRefresh = () => {
@@ -100,14 +89,8 @@ const HomePage = () => {
           style={{ width: 200 }}
           placeholder="Search to Select"
           optionFilterProp="children"
-          // if (selectedCategory !== "") {
-          // }
-
-          disabled={selectedCategory !== "" ? true : false} // Corrected line
-          filterOption={(input, option) =>
-            option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
-          options={categories.map((category: { id: string; name: string }) => ({
+          disabled={selectedCategory !== "" ? true : false}
+          options={categories.map((category) => ({
             value: category.id,
             label: category.name,
           }))}
@@ -117,22 +100,19 @@ const HomePage = () => {
         />
         <div className="time">{formatTime()}</div>
       </div>
-      {!gameOver && (
-        <GameMain
-          selectedCategory={selectedCategory}
-          chances={chances}
-          setChances={setChances}
-          userData={userData}
-          setUserData={setUserData}
-          gameOver={gameOver}
-          setGameOver={setGameOver}
-          setTimeRemainingInSeconds={setTimeRemainingInSeconds}
-          questionImages={questionImages}
-          setQuestionImages={setQuestionImages}
-          // setWonSeconds={setWonSeconds}
-        />
-      )}
-      {gameOver && <div>gf</div>}
+      <GameMain
+        selectedCategory={selectedCategory}
+        chances={chances}
+        setChances={setChances}
+        userData={userData}
+        setUserData={setUserData}
+        gameOver={gameOver}
+        setGameOver={setGameOver}
+        setTimeRemainingInSeconds={setTimeRemainingInSeconds}
+        questionImages={questionImages}
+        setQuestionImages={setQuestionImages}
+        
+      />
       <AllHistory />
       <Modal
         title={modalTitle}
@@ -140,12 +120,8 @@ const HomePage = () => {
         onOk={handleModalClose}
         onCancel={handleModalClose}
       >
-        {gameOver ? (
-          <Fragment>
-            <p>Score: {9 - questionImages.length}</p>
-            <p>Game Time: {timeRemainingInSeconds} seconds</p>
-          </Fragment>
-        ) : null}
+        <p>Question Images Deleted: {questionImages.length}</p>
+        <p>Game Duration: {timeRemainingInSeconds} seconds</p>
       </Modal>
     </main>
   );
