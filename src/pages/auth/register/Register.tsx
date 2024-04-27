@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import hide from "../../../assets/hide.png";
 import show from "../../../assets/show.png";
 import { useAuth } from "../../../states/auth";
@@ -9,10 +9,14 @@ const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [userForm, setUserForm] = useState({
-    username: "",
-    password: "",
-  });
+  console.log(loading);
+  
+const [userForm, setUserForm] = useState({
+  firstName: "",
+  lastName: "",
+  username: "",
+  password: "",
+});
 
   const auth = useAuth();
 

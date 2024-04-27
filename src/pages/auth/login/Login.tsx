@@ -11,6 +11,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [userForm, setUserForm] = useState({ username: "", password: "" });
   const [loading, setLoading] = useState(false);
+  console.log(loading);
+  
   const auth = useAuth();
 
   useEffect(() => {

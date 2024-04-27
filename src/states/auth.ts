@@ -14,7 +14,7 @@ type AuthTypes = {
   userId: string;
 };
 
-export const useAuth = create<AuthTypes>((set, get) => ({
+export const useAuth = create<AuthTypes>((set) => ({
   isAuthenticated: Cookies.get(TOKEN) ? true : false,
   userId: Cookies.get(USERID) || "",
   login: async (data, navigate) => {
