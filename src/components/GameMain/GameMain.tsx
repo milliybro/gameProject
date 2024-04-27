@@ -16,17 +16,17 @@ type GameMainProps = {
   setQuestionImages: (images: any[]) => void; // You should replace 'any[]' with the actual type of questionImages
 };
 
-type QuestionData = {
-  id: string;
-  question: string;
-  // other properties
-};
+// type QuestionData = {
+//   id: string;
+//   question: string;
+//   // other properties
+// };
 
 type UserData = {
   id: string;
   imageId: string;
   selected: any;
-  question: QuestionData;
+  question: string;
   // other properties
 };
 
@@ -192,8 +192,7 @@ const GameMain: React.FC<GameMainProps> = ({
                   onClick={() => handleUserDataClick(data.id)}
                   className={data.selected ? "selected" : ""}
                 >
-                  {data.question.question}{" "}
-                  {/* Access the 'question' property */}
+                  {data?.question}
                 </Button>
               ))}
           </div>
