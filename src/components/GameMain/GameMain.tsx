@@ -206,7 +206,7 @@ const GameMain: React.FC<GameMainProps> = ({
                 key={data.id}
                 onClick={() => handleQuestionImageClick(data.id)}
               >
-                <img src={`http://13.60.40.148:8000${data.image}`} alt="" />
+                <img src={`http://13.60.23.197:8000${data.image}`} alt="" />
               </Button>
             ))}
           </div>
