@@ -25,12 +25,12 @@ type QuestionData = {
 type UserData = {
   id: string;
   imageId: string;
-  selected:  any;
+  selected: any;
+  question: QuestionData;
   // other properties
 };
 
 // Then use this type in your component
-
 
 const GameMain: React.FC<GameMainProps> = ({
   selectedCategory,
@@ -145,7 +145,7 @@ const GameMain: React.FC<GameMainProps> = ({
         setChances(chances - 1);
         return;
       }
-  
+
       const updatedUserData = userData.filter((data) => data.imageId !== id);
       const updatedQuestionImages = questionImages.filter(
         (data) => data.id !== id
@@ -155,9 +155,9 @@ const GameMain: React.FC<GameMainProps> = ({
         questionImages.filter((data) => data.id === id)
       );
       setUserData(updatedUserData);
-  
+
       setQuestionImages(updatedQuestionImages);
-  
+
       const isCorrect = userDataItem.id === id;
       if (isCorrect) {
         if (updatedQuestionImages.length === 0) {
@@ -170,7 +170,7 @@ const GameMain: React.FC<GameMainProps> = ({
       console.log(err);
     }
   };
-  
+
   if (chances === 0) {
     return <div className="gameMain">You lost!</div>;
   }
@@ -192,7 +192,8 @@ const GameMain: React.FC<GameMainProps> = ({
                   onClick={() => handleUserDataClick(data.id)}
                   className={data.selected ? "selected" : ""}
                 >
-                  {data.question}
+                  {data.question.question}{" "}
+                  {/* Access the 'question' property */}
                 </Button>
               ))}
           </div>

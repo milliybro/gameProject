@@ -15,6 +15,7 @@ const HomePage = () => {
   const [questionImages, setQuestionImages] = useState<any[]>([]);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [modalTitle, setModalTitle] = useState<string>("");
+console.log(setModalTitle);
 
   useEffect(() => {
     fetchData();

@@ -4,15 +4,17 @@ import type { TableColumnsType, TableProps } from "antd";
 import { request } from "../../request";
 import "./AllHistory.scss";
 
+
+interface CategoryType {
+  name: string;
+}
 interface DataType {
   id: string;
   key: string;
-  category: {
-    name: string; // Define 'category' as an object with a 'name' property
-  };
+  category: CategoryType | null;// Define 'category' as an object with a 'name' property
   count: number;
   time: string;
-  is_win: boolean;
+  is_win: string;
 }
 
 
@@ -59,10 +61,10 @@ const AllHistory: React.FC = () => {
   const data = userData.map((item) => ({
     id: item.id,
     key: item.id,
-    category: item.category ? item.category.name : "Unknown", // Handle null category
+    category: item.category ? item.category?.name : "N/A", // Add null check
     count: item.count,
     time: new Date(item.time).toLocaleString("en-US", {
-      timeZone: "Asia/Tashkent", // Adjusted to Uzbekistan time zone
+      timeZone: "Asia/Tashkent",
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
