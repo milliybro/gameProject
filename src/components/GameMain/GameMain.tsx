@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { request } from "../../request";
 import { Button } from "antd";
 import "./GameMain.scss";
+import { useAuth } from "../../states/auth";
 
 type GameMainProps = {
   selectedCategory: string;
@@ -43,12 +44,13 @@ const GameMain: React.FC<GameMainProps> = ({
   questionImages,
   setQuestionImages,
 }) => {
+  const { userId } = useAuth();
   const postGameHistory = async () => {
     try {
       const is_win = chances > 0; // Player wins if chances are greater than 0
       const response = await request.post(`user/history-create/`, {
         count: 9 - userData.length, // Adjusted count calculation
-        user: 1, // Assuming user ID is 1, replace with actual user ID if available
+        user: userId, // Assuming user ID is 1, replace with actual user ID if available
         category: selectedCategory, // Assuming category ID is stored in selectedCategory
         time: new Date(),
         is_win: is_win, // Set is_win based on chances
